@@ -19,42 +19,58 @@
 // below I am using the affirmation app as a comparison for syntax
   let firstName = document.querySelector('#firstNameInput').value;
   let lastName = document.querySelector('#lastNameInput').value;
-  let idInput = document.querySelector('#idInput').value;
+  let id = document.querySelector('#idInput').value;
   let title = document.querySelector('#titleInput').value;
   let annualSalary = document.querySelector('#annualSalaryInput').value;
 
+  console.log(firstName,lastName,id,title,annualSalary)
+
   // Add the new employee from form in new row in the table:
 
-  let table = document.querySelector('table');
-  let newRow = table.insertRow(-1);
-  let firstNameCell = newRow.insertCell(0);
-  let lastNameCell = newRow.insertCell(1);
-  let idCell = newRow.insertCell(2);
-  let titleCell = newRow.insertCell(3);
-  let annualSalaryCell = newRow.insertCell(4);
+// let table = document.querySelector('table');
+// let newRow = table.insertRow(-1);
+// let firstNameCell = newRow.insertCell(0);
+//  let lastNameCell = newRow.insertCell(1);
+//  let idCell = newRow.insertCell(2);
+//  let titleCell = newRow.insertCell(3);
+//  let annualSalaryCell = newRow.insertCell(4);
 
-  firstNameCell.innerHTML = firstName;
-  lastNameCell.innerHTML = lastName;
-  idCell.innerHTML = id;
-  titleCell.innerHTML = title;
-  annualSalaryCell.innerHTML = annualSalary;
+//  firstNameCell.innerHTML = firstName;
+//  lastNameCell.innerHTML = lastName;
+//  idCell.innerHTML = id;
+//  titleCell.innerHTML = title;
+//  annualSalaryCell.innerHTML = annualSalary;
 
-  
+let newtablerow = document.querySelector('#table')
+
+newtablerow.innerHTML += `
+ <tr>
+<td>${firstName}</td>
+<td>${lastName}</td>
+<td>${id}}</td>
+<td>${title}</td>
+<td>${annualSalary}</td>
+
+<td><button onClick="removeItem(event)">❌</button>
+</td> 
+</tr>;`
+
   
   // Calculate and display the total monthly cost
-  function calculateTotalMonthlyCost(annualSalary) {
-    return annualSalary / 12;
-  const totalMonthlyCost = calculateTotalMonthlyCost(annualSalary);
-  document.querySelector('footer p').innerHTML = `Total Monthly: $${totalMonthlyCost}`;
+  //function calculateTotalMonthlyCost(annualSalary) {
+   // return annualSalary / 12;
+ 
+ let totalMonthlyCost = calculateTotalMonthlyCost(annualSalary/12);
+ document.querySelector('footer p').innerHTML =`Total Monthly: $${totalMonthlyCost}`;
 
 
   // Apply the "over-budget" class if necessary
   if (totalMonthlyCost > 20000) {
-    document.querySelector('footer').classList.add('over-budget');
+  document.querySelector('footer').classList.add('over-budget');
   } else {
-    document.querySelector('footer').classList.remove('over-budget');
+  document.querySelector('footer').classList.remove('over-budget');
   }
-}
+
 
 
 // ## Requirements: // * This application should have a form with five inputs that collect //a new employee's *first name, last name, ID number, job title, annual salary*.
@@ -75,5 +91,3 @@
 // * You must use a `<table>` element, where each employee is represented by a single `<tr>`.
 // * The *total monthly* cost must be rendered somewhere inside the `<footer>` element.
 // * The `over-budget` CSS class must be applied to the `<footer>` element when the total monthly salary exceeds $20,000.
-
-
