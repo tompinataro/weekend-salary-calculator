@@ -60,16 +60,37 @@ newtablerow.innerHTML += `
   //function calculateTotalMonthlyCost(annualSalary) {
    // return annualSalary / 12;
  
- let totalMonthlyCost = calculateTotalMonthlyCost(annualSalary/12);
+ let totalMonthlyCost = calculateTotalMonthlyCost(annualSalary);
  document.querySelector('footer p').innerHTML =`Total Monthly: $${totalMonthlyCost}`;
 
+// Select all rows in the table
+let rows = document.querySelectorAll('#table tr');
+
+// Initialize total to 0
+let totalAnnualSalary = 0;
+
+// Iterate through each row
+for (let i = 0; i < rows.length; i++) {
+    // Get the annual salary from the last cell of the row
+    let annualSalary = parseFloat(rows[i].lastChild.innerText);
+
+    // Add the annual salary to the total
+    totalAnnualSalary += annualSalary;
+}
+function calculateTotalMonthlyCost(totalAnnualSalary) {
+  return totalAnnualSalary / 12;
+}
+// Place the total monthly cost in the footer
+document.querySelector('footer p').innerHTML = "Total Monthly Cost";
 
   // Apply the "over-budget" class if necessary
-  if (totalMonthlyCost > 20000) {
+  // Apply the "over-budget" class if necessary
+if (totalMonthlyCost > 20000) {
   document.querySelector('footer').classList.add('over-budget');
-  } else {
+  document.querySelector('footer p').style.color = 'red';
+} else {
   document.querySelector('footer').classList.remove('over-budget');
-  }
+}
 
 
 
