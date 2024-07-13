@@ -1,11 +1,30 @@
-  // Get the form data
-  let firstName = document.querySelector('[data-testid="firstNameInput"]').value;
-  let lastName = document.querySelector('[data-testid="lastNameInput"]').value;
-  let id = document.querySelector('[data-testid="idInput"]').value;
-  let title = document.querySelector('[data-testid="titleInput"]').value;
-  let annualSalary = document.querySelector('[data-testid="annualSalaryInput"]').value;
+  function onReady() {
+    console.log("JavaScript is working!");
+  }
 
-  // Add the new employee to the table
+  function submitFields(event) {
+    document.querySelector('#Warning').innerHTML =` `
+    event.preventDefault();
+    }
+  
+  // Get the form data
+  // * Your form's inputs must have these exact attributes:
+  // (IN HTML ONLY!!!)
+//     * `data-testid="firstNameInput"`
+//     * `data-testid="lastNameInput"`
+//     * `data-testid="idInput"`
+//     * `data-testid="titleInput"`
+//     * `data-testid="annualSalaryInput"`
+ 
+// below I am using the affirmation app as a comparison for syntax
+  let firstName = document.querySelector('#firstNameInput').value;
+  let lastName = document.querySelector('#lastNameInput').value;
+  let idInput = document.querySelector('#idInput').value;
+  let title = document.querySelector('#titleInput').value;
+  let annualSalary = document.querySelector('#annualSalaryInput').value;
+
+  // Add the new employee from form in new row in the table:
+
   let table = document.querySelector('table');
   let newRow = table.insertRow(-1);
   let firstNameCell = newRow.insertCell(0);
@@ -20,9 +39,7 @@
   titleCell.innerHTML = title;
   annualSalaryCell.innerHTML = annualSalary;
 
-  function submitFields(event) {
-  event.preventDefault();
-  }
+  
   
   // Calculate and display the total monthly cost
   function calculateTotalMonthlyCost(annualSalary) {
@@ -54,12 +71,7 @@
 //     * **For base mode**, the total monthly cost **does not** need to be updated when an employee is deleted.
 
 // **FOR THE TESTS TO WORK**:
-// * Your form's inputs must have these exact attributes:
-//     * `data-testid="firstNameInput"`
-//     * `data-testid="lastNameInput"`
-//     * `data-testid="idInput"`
-//     * `data-testid="titleInput"`
-//     * `data-testid="annualSalaryInput"`
+
 // * You must use a `<table>` element, where each employee is represented by a single `<tr>`.
 // * The *total monthly* cost must be rendered somewhere inside the `<footer>` element.
 // * The `over-budget` CSS class must be applied to the `<footer>` element when the total monthly salary exceeds $20,000.
