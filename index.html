@@ -3,6 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <link rel="stylesheet" href="style.css">
+  <script defer src="script.js"></script>
   <title>Salary Calculator</title>
 </head>
 <body>
@@ -11,6 +12,32 @@
   </header>
   <main>
     <h2>Add Employee</h2>
+    <form>
+      <input
+        placeholder="First Name"
+        type="text"
+        data-testid="firstNameInput">
+      <input
+        placeholder="Last Name"
+        type="text"
+        data-testid="lastNameInput">
+      <input
+        placeholder="ID#"
+        type="text"
+        data-testid="idInput">
+      <input
+        placeholder="Title"
+        type="text"
+        data-testid="titleInput">
+      <input
+        placeholder="Annual Salary"
+        type="text"
+        data-testid="annualSalaryInput">
+
+      <button data-testid="submitButton" onClick="submitFields(event)">
+              Submit
+             </button>
+    </form>
     <h2>Employees</h2>
   </main>
   <footer>
@@ -18,3 +45,23 @@
   </footer>
 </body>
 </html>
+
+
+
+
+<!--// **FOR THE TESTS TO WORK**:
+// * Your form's submit button **must** have a `data-testid="submitButton"` attribute. Like so:
+//   * ```html
+//     <button data-testid="submitButton">
+//       Submit
+//     </button>
+//     ```
+// * Your form's inputs must have these exact attributes:
+//     * `data-testid="firstNameInput"`
+//     * `data-testid="lastNameInput"`
+//     * `data-testid="idInput"`
+//     * `data-testid="titleInput"`
+//     * `data-testid="annualSalaryInput"`
+// * You must use a `<table>` element, where each employee is represented by a single `<tr>`.
+// * The *total monthly* cost must be rendered somewhere inside the `<footer>` element.
+// * The `over-budget` CSS class must be applied to the `<footer>` element when the total monthly salary exceeds $20,000.
