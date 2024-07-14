@@ -1,13 +1,17 @@
   function onReady() {
     console.log("JavaScript is working!");
+    onReady
   }
-//function testfunction (event){
-//  console.log ("hello")
+  function testfunction (event){
+  console.log ("hello")
+  }
 
-function testFunction(event){
-  console.log(`hello`, event)
-}
-testFunction (3)
+  function testFunctionCAP(event){
+  console.log("HELLO", event)
+  }
+  testfunction ()
+  testFunctionCAP (5)
+  onReady ()
 
   function submitFields(event) {
     document.querySelector('#Warning').innerHTML =` `
@@ -16,22 +20,23 @@ testFunction (3)
   
   // Get the form data
   // * Your form's inputs must have these exact attributes:
-  // (IN HTML ONLY!!!)
-//     * `data-testid="firstNameInput"`
-//     * `data-testid="lastNameInput"`
-//     * `data-testid="idInput"`
-//     * `data-testid="titleInput"`
-//     * `data-testid="annualSalaryInput"`
+  // (IN HTML ONLY!!!)  * `data-testid="firstNameInput"`
  
 // below I am using the affirmation app as a comparison for syntax
-  let firstName = document.querySelector('#firstNameInput').value;
-  let lastName = document.querySelector('#lastNameInput').value;
-  let id = document.querySelector('#idInput').value;
-  let title = document.querySelector('#titleInput').value;
-  let annualSalary = document.querySelector('#annualSalaryInput').value;
-
-  console.log(firstName,lastName,id,title,annualSalary)
+  let firstName = document.querySelector('#firstName').value;
+  let lastName = document.querySelector('#lastName').value;
+  let id = document.querySelector('#idNumber').value;
+  let title = document.querySelector('#title').value;
+  let annualSalary = document.querySelector('#annualSalary').value;
   
+ //function show();{
+ // console.log("firstName","lastName",id,"title",annualSalary)
+ }
+ function testFunctionCAP(event){
+  console.log("HELLO", event)
+  }
+  testfunction ()
+  testFunctionCAP (5)
   // Add the new employee from form in new row in the table:
 
 // let table = document.querySelector('table');
@@ -54,7 +59,7 @@ newtablerow.innerHTML += `
  <tr>
 <td>${firstName}</td>
 <td>${lastName}</td>
-<td>${id}}</td>
+<td>${idNumber}}</td>
 <td>${title}</td>
 <td>${annualSalary}</td>
 
@@ -84,7 +89,7 @@ for (let i = 0; i < rows.length; i++) {
     // Add the annual salary to the total
     totalAnnualSalary += annualSalary;
 }
-}
+
 function calculateTotalMonthlyCost(totalAnnualSalary) {
   return totalAnnualSalary / 12;
 

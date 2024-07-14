@@ -11,34 +11,41 @@
     <h1>Salary Calculator</h1>
   </header>
   <main>
-    <h2>Add Employee</h2>
+    <h2>Add New Employee Here</h2>
     <form>
       <input
         placeholder="First Name"
         type="text"
-        data-testid="firstNameInput">
+        id="firstName"
+        data-testid="firstNameInput"></input>
+
       <input
         placeholder="Last Name"
         type="text"
-        data-testid="lastNameInput">
+        id="lastName"
+        data-testid="lastNameInput"></input>
+
       <input
         placeholder="ID#"
-        type="text"
-        data-testid="idInput">
+        type="number"
+        id="idNumber"
+        data-testid="idInput"></input>
       <input
         placeholder="Title"
         type="text"
-        data-testid="titleInput">
+        id="title"
+        data-testid="titleInput"></input>
       <input
         placeholder="Annual Salary"
         type="number"
-        data-testid="annualSalaryInput">
+        id="annualSalary"
+        data-testid="annualSalaryInput"></input>
 
-      <button id="submit button" data-testid="submitButton" onClick="testfunction(event)"> 
+      <button id="submitbutton" data-testid="submitButton" onClick="addEmployee(event)"> 
               Submit
              </button>
              <!-- added id="submit button" in front of data-testid;
-              not sure if the onClick is needed here? -->
+              not sure if the onClick is needed above? -->
     </form>
     <section>
       <h2>Employees</h2>
@@ -57,18 +64,12 @@
         </tbody>
       </table>
     </section>
-
-
-
   </main>
   <footer>
     <p>Total Monthly Salary (Budget goal = $20,000):</p>
   </footer>
 </body>
 </html>
-
-
-
 
 <!--// **FOR THE TESTS TO WORK**:
 // * Your form's submit button **must** have a `data-testid="submitButton"` attribute. Like so:
