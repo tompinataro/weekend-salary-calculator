@@ -5,7 +5,7 @@
   function submitFields(event) {
     document.querySelector('#Warning').innerHTML =` `
     event.preventDefault();
-    }
+    
   
   // Get the form data
   // * Your form's inputs must have these exact attributes:
@@ -24,7 +24,7 @@
   let annualSalary = document.querySelector('#annualSalaryInput').value;
 
   console.log(firstName,lastName,id,title,annualSalary)
-
+  }
   // Add the new employee from form in new row in the table:
 
 // let table = document.querySelector('table');
