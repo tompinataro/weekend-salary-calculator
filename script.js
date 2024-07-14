@@ -24,7 +24,7 @@
   let annualSalary = document.querySelector('#annualSalaryInput').value;
 
   console.log(firstName,lastName,id,title,annualSalary)
-  }
+  
   // Add the new employee from form in new row in the table:
 
 // let table = document.querySelector('table');
@@ -54,7 +54,7 @@ newtablerow.innerHTML += `
 <td><button onClick="removeItem(event)">❌</button>
 </td> 
 </tr>;`
-
+  }
   
   // Calculate and display the total monthly cost
   //function calculateTotalMonthlyCost(annualSalary) {
