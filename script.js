@@ -1,6 +1,13 @@
   function onReady() {
     console.log("JavaScript is working!");
   }
+//function testfunction (event){
+//  console.log ("hello")
+
+function testFunction(event){
+  console.log(`hello`, event)
+}
+testFunction (3)
 
   function submitFields(event) {
     document.querySelector('#Warning').innerHTML =` `
@@ -54,7 +61,7 @@ newtablerow.innerHTML += `
 <td><button onClick="removeItem(event)">❌</button>
 </td> 
 </tr>;`
-  }
+  
   
   // Calculate and display the total monthly cost
   //function calculateTotalMonthlyCost(annualSalary) {
@@ -77,9 +84,10 @@ for (let i = 0; i < rows.length; i++) {
     // Add the annual salary to the total
     totalAnnualSalary += annualSalary;
 }
+}
 function calculateTotalMonthlyCost(totalAnnualSalary) {
   return totalAnnualSalary / 12;
-}
+
 // Place the total monthly cost in the footer
 document.querySelector('footer p').innerHTML = "Total Monthly Cost";
 
@@ -91,7 +99,7 @@ if (totalMonthlyCost > 20000) {
 } else {
   document.querySelector('footer').classList.remove('over-budget');
 }
-
+}
 
 
 // ## Requirements: // * This application should have a form with five inputs that collect //a new employee's *first name, last name, ID number, job title, annual salary*.
