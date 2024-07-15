@@ -21,9 +21,10 @@
   // * Your form's inputs must have these exact attributes:
   // (IN HTML ONLY!!!)  * `data-testid="firstNameInput"`
  
-function addnewtablerow(event){
+  function submitFields(addTableRow){
+
   document.querySelector('#Warning').innerHTML =` `;
-  Event.preventDefault();
+  addTableRow.preventDefault();
 
   // below I am using the affirmation app as a comparison for syntax
   let firstName = document.querySelector('#firstName').value;
@@ -46,7 +47,7 @@ function addnewtablerow(event){
     <td><button onClick="removeItem(event)">❌</button>
     </td> 
     </tr>
-    `;
+    `
     } 
   
   // Calculate and display the total monthly cost
@@ -77,7 +78,6 @@ function addnewtablerow(event){
 // Place the total monthly cost in the footer
 //document.querySelector('footer p').innerHTML = "Total Monthly Cost";
 
-  // Apply the "over-budget" class if necessary
   // Apply the "over-budget" class if necessary
 //if (totalMonthlyCost > 20000) {
  // document.querySelector('footer').classList.add('over-budget');
