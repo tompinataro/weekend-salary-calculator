@@ -1,128 +1,88 @@
-  function onReady() {
-    console.log("JavaScript is working!");
-    onReady
-  }
-  function testfunction (event){
-  console.log ("hello")
-  }
 
-  function testFunctionCAP(event){
-  console.log("HELLO", event)
-  }
-  testfunction ()
-  testFunctionCAP (5)
-  onReady ()
+// -- GLOBAL VARIABLE TO KEEP TRACK OF THE TOTAL ANNUAL SALARY ------------- //
 
-// Why is the following attempt at using a function not working??
- //function show(){
- //console.log("firstName","lastName","id","title","annualSalary")
-// }
-   // Get the form data
-  // * Your form's inputs must have these exact attributes:
-  // (IN HTML ONLY!!!)  * `data-testid="firstNameInput"`
- 
-  function submitFields(addTableRow){
+let totalAnnualSalary = 0
 
-  document.querySelector('#Warning').innerHTML =` `;
-  addTableRow.preventDefault();
+// -- FUNCTIONS THAT ARE CALLED IN RESPONSE TO CLICK EVENTS ---------------- //
+  // -- Handles the "Submit" button being clicked:
 
-  // below I am using the affirmation app as a comparison for syntax
-  let firstName = document.querySelector('#firstName').value;
-  let lastName = document.querySelector('#lastName').value;
-  let idNumber = document.querySelector('#idNumber').value;
-  let title = document.querySelector('#title').value;
-  let annualSalary = document.querySelector('#annualSalary').value;
+function handleSubmit(event) {
+  event.preventDefault();
+
+  const newEmployee = getNewEmployeeInfo();
   
-  console.log(firstName,lastName,idNumber,title,annualSalary)
+  addNewEmployeeTableRow(newEmployee);
 
-  let newtablerow = document.querySelector('#table')
-//
-  newtablerow.innerHTML += `
-    <tr>
-    <td>${firstName}</td>
-    <td>${lastName}</td>
-    <td>${idNumber}}</td>
-    <td>${title}</td>
-    <td>${annualSalary}</td>
-    <td><button onClick="removeItem(event)">❌</button>
-    </td> 
-    </tr>
+  resetNewEmployeeForm();
+
+  updateTotalMonthlySalary(newEmployee.annualSalary);
+}
+
+  // -- Handles a table row's "Delete" button being clicked:
+  function removeEmployee(event) {
+    let clickedButton = event.target;
+    let trToRemove = clickedButton.parentElement.parentElement;
+    trToRemove.remove();
+}
+
+// -- "HELPER FUNCTIONS" FOR `handleSubmit` -------------------------------- //
+  // Returns an object that contains the data the user typed into
+  // the inputs, 
+
+  function getNewEmployeeInfo() {
+    let firstName = document.getElementById('firstNameInput').value;
+    let lastName = document.getElementById('lastNameInput').value;
+    let employeeId = document.getElementById('employeeIdInput').value;
+    let title = document.getElementById('titleInput').value;
+    let annualSalaryAsNumber = Number(document.getElementById('annualSalaryInput').value);
+
+    return {
+        firstName: firstName,
+        lastName: lastName,
+        employeeId: employeeId,
+        title: title,
+        annualSalary: annualSalaryAsNumber
+      }
+  }
+   // Takes in a new employee object and adds a new table row to the
+  // DOM that contains the new employee's info:
+function addNewEmployeeTableRow(newEmployee) {
+    let tbody = document.getElementById('employeesTableBody');
+    
+    // b. Add a new <tr> inside the <tbody>:
+    tbody.innerHTML += `
+      <tr>
+        <td>${newEmployee.firstName}</td>
+        <td>${newEmployee.lastName}</td>
+        <td>${newEmployee.employeeId}</td>
+        <td>${newEmployee.title}</td>
+        <td>${convertNumberToUSD(newEmployee.annualSalary)}</td>
+        <td>
+          <button onClick="removeEmployee(event)">Delete</button>
+        </td>
+      </tr>
     `
-    } 
+  }
+   // Sets the value of every input to an empty string:
+function resetNewEmployeeForm() {
+    document.getElementById('firstNameInput').value = '';
+    document.getElementById('lastNameInput').value = '';
+    document.getElementById('employeeIdInput').value = '';
+    document.getElementById('titleInput').value = '';
+    document.getElementById('annualSalaryInput').value = '';
+  }
+// Takes in the new employee's salary, updates the totalMonthlySalary global
+  // variable, the updates the DOM to reflect the new value:
+  function updateTotalMonthlySalary(newEmployeeSalary) {
+    totalAnnualSalary += newEmployeeSalary;
   
-  // Calculate and display the total monthly cost
-  //function calculateTotalMonthlyCost(annualSalary) {
-   // return annualSalary / 12;
- 
-//  let totalMonthlyCost = calculateTotalMonthlyCost(annualSalary);
-//  document.querySelector('footer p').innerHTML =`Total Monthly: $${totalMonthlyCost}`;
-
-// // Select all rows in the table
-// let rows = document.querySelectorAll('#table tr');
-
-// // Initialize total to 0
-// let totalAnnualSalary = 0;
-
-// Iterate through each row
-// for (let i = 0; i < rows.length; i++) {
-//     // Get the annual salary from the last cell of the row
-//     let annualSalary = parseFloat(rows[i].lastChild.innerText);
-
-//     // Add the annual salary to the total
-//     totalAnnualSalary += annualSalary;
-// }
-
-//function calculateTotalMonthlyCost(totalAnnualSalary) {
-//  return totalAnnualSalary / 12;
-
-// Place the total monthly cost in the footer
-//document.querySelector('footer p').innerHTML = "Total Monthly Cost";
-
-  // Apply the "over-budget" class if necessary
-//if (totalMonthlyCost > 20000) {
- // document.querySelector('footer').classList.add('over-budget');
- // document.querySelector('footer p').style.color = 'red';
-//} else {
-//  document.querySelector('footer').classList.remove('over-budget');
-//}
-
-
-
-// ## Requirements: // * This application should have a form with five inputs that collect //a new employee's *first name, last name, ID number, job title, annual salary*.
-
-// * When the "Submit" button is clicked:
-//     * A new employee row should be added to the table.
-//     * The footer's total monthly cost should be updated.
-//     * The form inputs should be cleared out.
-
-// * If the total monthly cost **exceeds $20,000**, apply an `over-budget` CSS class to the footer element.
-//     * When applied, this CSS class should provide a clear visual indication that the monthly cost has been exceeded. (This could be as simple as turning the footer text red.)
-
-// * Create a "Delete" button that removes an employee from the DOM.
-//     * **For base mode**, the total monthly cost **does not** need to be updated when an employee is deleted.
-
-// **FOR THE TESTS TO WORK**:
-
-// * You must use a `<table>` element, where each employee is represented by a single `<tr>`.
-// * The *total monthly* cost must be rendered somewhere inside the `<footer>` element.
-// * The `over-budget` CSS class must be applied to the `<footer>` element when the total monthly salary exceeds $20,000.
-
-
-
-
-//Leftovers
-  // Add the new employee from form in new row in the table:
-
-// let table = document.querySelector('table');
-// let newRow = table.insertRow(-1);
-// let firstNameCell = newRow.insertCell(0);
-//  let lastNameCell = newRow.insertCell(1);
-//  let idCell = newRow.insertCell(2);
-//  let titleCell = newRow.insertCell(3);
-//  let annualSalaryCell = newRow.insertCell(4);
-
-//  firstNameCell.innerHTML = firstName;
-//  lastNameCell.innerHTML = lastName;
-//  idCell.innerHTML = id;
-//  titleCell.innerHTML = title;
-//  annualSalaryCell.innerHTML = annualSalary;
+    let totalMonthlySalary = totalAnnualSalary / 12;
+  
+    let totalMonthlySpan = document.getElementById('totalMonthlySalarySpan');
+    totalMonthlySpan.textContent = convertNumberToUSD(totalMonthlySalary);
+  
+    if (totalMonthlySalary > 20000) {
+        let leFoot = document.querySelector('footer');
+        leFoot.classList.add('over-budget');
+      }
+    }

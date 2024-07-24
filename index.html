@@ -14,61 +14,60 @@
     <h2>Add New Employee Here</h2>
     <form>
       <input
+        type="text"
+        id="firstNameInput"
         placeholder="First Name"
-        type="text"
-        id="firstName"
-        data-testid="firstNameInput"></input>
-
+        data-testid="firstNameInput">
       <input
+        type="text"
+        id="lastNameInput"
         placeholder="Last Name"
-        type="text"
-        id="lastName"
-        data-testid="lastNameInput"></input>
-
+        data-testid="lastNameInput">
       <input
-        placeholder="ID#"
         type="number"
-        id="idNumber"
-        data-testid="idInput"></input>
+        id="employeeIdInput"
+        placeholder="Employee ID"
+        data-testid="idInput">
       <input
+        type="text"
+        id="titleInput"
         placeholder="Title"
-        type="text"
-        id="title"
-        data-testid="titleInput"></input>
-      <input
-        placeholder="Annual Salary"
+        data-testid="titleInput">
+        
+        <input
         type="number"
-        id="annualSalary"
-        data-testid="annualSalaryInput"></input>
-
- <!-- <button onClick="submitFields(event)">Submit</button> (from affirmations project)-->
-      <button onClick="submitFields(event)">Submit</button>
-
-             <!-- tried id="submit button" in front of data-testid;
-              not sure that is needed above? -->
+        id="annualSalaryInput"
+        placeholder="Annual Salary"
+        data-testid="annualSalaryInput">
+      <button
+        onClick="handleSubmit(event)"
+        data-testid="submitButton">
+        Submit
+      </button>
     </form>
-    <section>
-      <h2>Employees</h2>
-      <table>
-        <thead>
-          <tr>
-            <th>First Name</th>
-            <th>Last Name</th>
-            <th>ID#</th>
-            <th>Title</th>
-            <th>Annual Salary</th>
-            <th>Delete</th>
-          </tr>
-        </thead>
-        <tbody id="table">
-        </tbody>
-      </table>
-    </section>
+
+    <h2>Employees</h2>
+    <table>
+      <thead>
+        <tr>
+          <th>First Name</th>
+          <th>Last Name</th>
+          <th>ID</th>
+          <th>Title</th>
+          <th>Annual Salary</th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody id="employeesTableBody">
+        <!-- This is where the employee rows go!-->
+      </tbody>
+    </table>
   </main>
+
   <footer>
-    <p>Total Monthly Salary (Budget goal = $20,000):</p>
+    <p>Total Monthly: <span id="totalMonthlySalarySpan">$0</span></p>
   </footer>
-</body>
+</body>  
 </html>
 
 <!--// **FOR THE TESTS TO WORK**:
