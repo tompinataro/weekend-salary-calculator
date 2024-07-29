@@ -1,5 +1,3 @@
-script.js
-
 let totalAnnualSalary = 0;
 
 function handleSubmit(event) {
@@ -21,7 +19,7 @@ function handleSubmit(event) {
       <td>${lastName}</td>
       <td>${employeeId}</td>
       <td>${title}</td>
-      <td>${convertNumberToUSD(annualSalaryAsNumber)}</td>
+      <td>${annualSalary}</td>
       <td>
         <button onClick="removeEmployee(event)">Delete</button>
       </td>
@@ -34,12 +32,11 @@ function handleSubmit(event) {
   document.getElementById('titleInput').value = '';
   document.getElementById('annualSalaryInput').value = '';
 
-  totalAnnualSalary += annualSalaryAsNumber;
+  totalAnnualSalary += annualSalary;
 
   let totalMonthlySalary = totalAnnualSalary / 12;
 
-  let totalMonthlySpan = document.getElementById('totalMonthlySalarySpan');
-  totalMonthlySpan.textContent = convertNumberToUSD(totalMonthlySalary);
+  let totalMonthly = document.getElementById('totalMonthlySalary');
 
   if (totalMonthlySalary > 20000) {
     let leFoot = document.querySelector('footer');
@@ -47,21 +44,10 @@ function handleSubmit(event) {
   }
 }
 
-// 6. When a Delete button is clicked, the <tr> it is inside of
-//    should be removed from the DOM:
 function removeEmployee(event) {
   let clickedButton = event.target;
   let trToRemove = clickedButton.parentElement.parentElement;
   trToRemove.remove();
-  // Or, if you want to just chain all the methods:
-  // event.target.parentElement.parentElement.remove();
 }
 
-// Given a number like: 50222.2222, this function will return
-// a string representation as USD currency: '$50,222.22':
-  // https://codedamn.com/news/javascript/format-number-as-currency
-function convertNumberToUSD(number) {
-  let formatter = new Intl.NumberFormat('en-US', {style: 'currency', currency: 'USD'});
-  let numberAsUSD = formatter.format(number);
-  return numberAsUSD;
-}
+
