@@ -8,7 +8,6 @@ function handleSubmit(event) {
   let employeeId = document.getElementById('employeeIdInput').value;
   let title = document.getElementById('titleInput').value;
   let annualSalary = document.getElementById('annualSalaryInput').value;
-  annualSalaryAsNumber = Number(annualSalary);
 
   
   let tbody = document.getElementById('employeesTableBody');
