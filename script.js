@@ -7,9 +7,10 @@ function handleSubmit(event) {
   let lastName = document.getElementById('lastNameInput').value;
   let employeeId = document.getElementById('employeeIdInput').value;
   let title = document.getElementById('titleInput').value;
-  let annualSalary = document.getElementById('annualSalaryInput').value;
+  let annualSalary = document.getElementById('annualSalary').value;
 
-  
+  annualSalary = Number(annualSalary);
+
   let tbody = document.getElementById('employeesTableBody');
   
   tbody.innerHTML += `
@@ -29,13 +30,17 @@ function handleSubmit(event) {
   document.getElementById('lastNameInput').value = '';
   document.getElementById('employeeIdInput').value = '';
   document.getElementById('titleInput').value = '';
-  document.getElementById('annualSalaryInput').value = '';
+  document.getElementById('annualSalary').value = '';
 
   totalAnnualSalary += annualSalary;
 
+  console.log("This is totalAnnualSalary:", totalAnnualSalary);
+
   let totalMonthlySalary = totalAnnualSalary / 12;
 
-  let totalMonthly = document.getElementById('totalMonthlySalary');
+  let totalMonthlySalaryHtmlElement = document.getElementById('totalMonthlySalary');
+  // console.log(totalMonthlySalaryHtmlElement);
+  totalMonthlySalaryHtmlElement.innerHTML = totalMonthlySalary;
 
   if (totalMonthlySalary > 20000) {
     let leFoot = document.querySelector('footer');
