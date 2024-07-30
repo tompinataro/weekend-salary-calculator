@@ -44,7 +44,7 @@ function handleSubmit(event) {
 
   if (totalMonthlySalary > 20000) {
     let leFoot = document.querySelector('footer');
-    leFoot.classList.add('over-budget');
+    leFoot.classList.add('overBudget');
   }
 }
 
